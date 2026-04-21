@@ -1,7 +1,10 @@
-# Propuesta TP DSW
+# Propuesta TP DSW 2026 - COM 305 - GesThor
 
 ## Grupo
 ### Integrantes
+* 43187 - Tisocco, Lucas Maximiliano
+* legajo - Apellido(s), Nombre(s)
+* legajo - Apellido(s), Nombre(s)
 * legajo - Apellido(s), Nombre(s)
 
 ### Repositorios
@@ -11,33 +14,74 @@
 
 ## Tema
 ### Descripción
-*2 a 6 líneas describiendo el negocio (menos es más)*
+Sistema de gestión de recursos humanos orientado al control de horas laborales. Permite a empleados registrar sus horas trabajadas asociadas a proyectos de clientes, mientras que el área de RRHH administra empleados, clientes y proyectos, verifica la carga horaria y gestiona la asignación de personal a cada proyecto.
 
 ### Modelo
-![imagen del modelo]()
 
-*Nota*: incluir un link con la imagen de un modelo, puede ser modelo de dominio, diagrama de clases, DER. Si lo prefieren pueden utilizar diagramas con [Mermaid](https://mermaid.js.org) en lugar de imágenes.
+```mermaid
+erDiagram
+    EMPLEADO {
+        int id PK
+        string dni
+        string nomyape
+        date fecha_nac
+        string categoria
+        string num_tel
+        string rol
+        string user
+        string pass
+    }
+    CLIENTE {
+        int id_cliente PK
+        string razon_social
+        string cuit
+        string tel
+        string mail
+    }
+    PROYECTO {
+        int id_proyecto PK
+        string nombre_proyecto
+        int proyecto_horas
+        date fecha_ini_proy
+        date fecha_fin_proy
+    }
+    REGISTRO_HORAS {
+        int id_registro PK
+        string desc_tareas
+        float cant_horas_trab
+        date fecha
+    }
+    ASIGNACION {
+        int id_asignacion PK
+        date fecha_ini
+        date fecha_fin
+    }
+ 
+    EMPLEADO ||--o{ ASIGNACION : "participa en"
+    PROYECTO ||--o{ ASIGNACION : "tiene asignados"
+    CLIENTE ||--o{ PROYECTO : "contrata"
+    EMPLEADO ||--o{ REGISTRO_HORAS : "registra"
+    PROYECTO ||--o{ REGISTRO_HORAS : "recibe horas de"
+```
 
 ## Alcance Funcional 
 
 ### Alcance Mínimo
 
-*Nota*: el siguiente es un ejemplo para un grupo de 3 integrantes para un sistema de hotel. El 
-
 Regularidad:
 |Req|Detalle|
 |:-|:-|
-|CRUD simple|1. CRUD Tipo Habitacion<br>2. CRUD Servicio<br>3. CRUD Localidad|
-|CRUD dependiente|1. CRUD Habitación {depende de} CRUD Tipo Habitacion<br>2. CRUD Cliente {depende de} CRUD Localidad|
-|Listado<br>+<br>detalle| 1. Listado de habitaciones filtrado por tipo de habitación, muestra nro y tipo de habitación => detalle CRUD Habitacion<br> 2. Listado de reservas filtrado por rango de fecha, muestra nro de habitación, fecha inicio y fin estadía, estado y nombre del cliente => detalle muestra datos completos de la reserva y del cliente|
-|CUU/Epic|1. Reservar una habitación para la estadía<br>2. Realizar el check-in de una reserva|
+| CRUD simple | 1. CRUD Empleado  2. CRUD Cliente  3. CRUD Categoría de Empleado |
+| CRUD dependiente | 1. CRUD Proyecto {depende de} CRUD Cliente  2. CRUD Asignación {depende de} CRUD Empleado y CRUD Proyecto  3. CRUD Registro de Horas {depende de} CRUD Empleado y CRUD Proyecto |
+| Listado + detalle | 1. Listado de proyectos filtrado por cliente, muestra nombre del proyecto, fechas y horas estimadas => detalle muestra datos completos del proyecto, cliente y empleados asignados  2. Listado de registros de horas filtrado por empleado y rango de fecha, muestra nombre del empleado, proyecto, fecha y horas cargadas => detalle muestra descripción completa de la tarea |
+| CUU/Epic | 1. Registrar horas trabajadas en un proyecto (Empleado)  2. Asignar empleado a un proyecto (Admin RRHH)  3. Verificar y aprobar carga horaria de un empleado (Admin RRHH)  4. Consultar resumen de horas por proyecto (Admin RRHH) |
 
 
 Adicionales para Aprobación
 |Req|Detalle|
 |:-|:-|
-|CRUD |1. CRUD Tipo Habitacion<br>2. CRUD Servicio<br>3. CRUD Localidad<br>4. CRUD Provincia<br>5. CRUD Habitación<br>6. CRUD Empleado<br>7. CRUD Cliente|
-|CUU/Epic|1. Reservar una habitación para la estadía<br>2. Realizar el check-in de una reserva<br>3. Realizar el check-out y facturación de estadía y servicios|
+| CRUD | 1. CRUD Empleado  2. CRUD Cliente  3. CRUD Categoría de Empleado  4. CRUD Proyecto  5. CRUD Asignación  6. CRUD Registro de Horas |
+| CUU/Epic | 1. Registrar horas trabajadas en un proyecto (Empleado)  2. Asignar empleado a un proyecto (Admin RRHH)  3. Verificar y aprobar carga horaria de un empleado (Admin RRHH)  4. Consultar resumen de horas por proyecto (Admin RRHH)  5. Login con autenticación propia y control de acceso por rol (Admin / Empleado) |
 
 
 ### Alcance Adicional Voluntario
@@ -46,7 +90,7 @@ Adicionales para Aprobación
 
 |Req|Detalle|
 |:-|:-|
-|Listados |1. Estadía del día filtrado por fecha muestra, cliente, habitaciones y estado <br>2. Reservas filtradas por cliente muestra datos del cliente y de cada reserve fechas, estado cantidad de habitaciones y huespedes|
-|CUU/Epic|1. Consumir servicios<br>2. Cancelación de reserva|
-|Otros|1. Envío de recordatorio de reserva por email|
+| Listados | 1. Dashboard de horas por proyecto filtrado por mes, muestra empleados, horas cargadas y porcentaje de avance sobre el estimado  2. Historial de asignaciones de un empleado, muestra proyectos en los que participó con fechas y horas totales registradas |
+| CUU/Epic | 1. Notificación por email al empleado cuando es asignado a un proyecto  2. Exportar reporte de horas de un proyecto en formato CSV |
+| Otros | 1. Contador de horas diarias disponibles por empleado con alerta visual al superar el límite |
 
