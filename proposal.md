@@ -17,51 +17,7 @@ Sistema de gestión de recursos humanos orientado al control de horas laborales 
 
 ### Modelo
 
-```mermaid
-erDiagram
-    EMPLEADO {
-        int id PK
-        string dni
-        string nomyape
-        date fecha_nac
-        string categoria
-        string num_tel
-        string rol
-        string user
-        string pass
-    }
-    CLIENTE {
-        int id_cliente PK
-        string razon_social
-        string cuit
-        string tel
-        string mail
-    }
-    PROYECTO {
-        int id_proyecto PK
-        string nombre_proyecto
-        int proyecto_horas
-        date fecha_ini_proy
-        date fecha_fin_proy
-    }
-    REGISTRO_HORAS {
-        int id_registro PK
-        string desc_tareas
-        float cant_horas_trab
-        date fecha
-    }
-    ASIGNACION {
-        int id_asignacion PK
-        date fecha_ini
-        date fecha_fin
-    }
- 
-    EMPLEADO ||--o{ ASIGNACION : "participa en"
-    PROYECTO ||--o{ ASIGNACION : "tiene asignados"
-    CLIENTE ||--o{ PROYECTO : "contrata"
-    EMPLEADO ||--o{ REGISTRO_HORAS : "registra"
-    PROYECTO ||--o{ REGISTRO_HORAS : "recibe horas de"
-```
+<img width="708" height="452" alt="image" src="https://github.com/user-attachments/assets/87efcbb9-ffe4-479f-bc00-4793013ab5b6" />
 
 ## Alcance Funcional 
 
