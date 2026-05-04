@@ -3,9 +3,9 @@
 ## Grupo
 ### Integrantes
 * 43187 - Tisocco, Lucas Maximiliano
-* legajo - Apellido(s), Nombre(s)
-* legajo - Apellido(s), Nombre(s)
-* legajo - Apellido(s), Nombre(s)
+* 51315 - Pontelli, Juan Martin
+* 42786 - Cuesta, Juan Ignacio
+* 41421 - Romero, Emmanuel Nicolas
 
 ### Repositorios
 * [frontend app](http://hyperlinkToGihubOrGitlab)
@@ -13,7 +13,7 @@
 
 ## Tema
 ### Descripción
-Sistema de gestión de recursos humanos orientado al control de horas laborales. Permite a empleados registrar sus horas trabajadas asociadas a proyectos de clientes, mientras que el área de RRHH administra empleados, clientes y proyectos, verifica la carga horaria y gestiona la asignación de personal a cada proyecto.
+Sistema de gestión de recursos humanos orientado al control de horas laborales en entornos de consultoría y servicios profesionales. El sistema contempla dos perfiles de usuario: administrador (RRHH) y empleado, cada uno con credenciales de acceso propias y funcionalidades diferenciadas según su rol. Los empleados registran sus horas laborales diarias asociadas a proyectos de clientes, mientras que el administrador supervisa y valida dichas cargas horarias, monitorea el estado de avance de los proyectos y gestiona la asignación de personal. El sistema incluye además un contador de horas diarias disponibles por empleado, facilitando el seguimiento de la capacidad operativa del equipo.
 
 ### Modelo
 
@@ -87,7 +87,7 @@ Adicionales para Aprobación
 
 |Req|Detalle|
 |:-|:-|
-| Listados | 1. Dashboard de horas por proyecto filtrado por mes, muestra empleados, horas cargadas y porcentaje de avance sobre el estimado<br>  2. Historial de asignaciones de un empleado, muestra proyectos en los que participó con fechas y horas totales registradas |
-| CUU/Epic | 1. Notificación por email al empleado cuando es asignado a un proyecto<br>  2. Exportar reporte de horas de un proyecto en formato CSV |
+| Listados | 1. Dashboard de horas por proyecto filtrado por mes, muestra empleados, horas cargadas y porcentaje de avance sobre el estimado<br>  2. Historial de asignaciones de un empleado, muestra proyectos en los que participó con fechas y horas totales registradas<br> 3. Notificacion por email al empleado confirmando aprobacion de horas laborales |
+| CUU/Epic | 1. Notificación por email al empleado cuando es asignado a un proyecto<br>  2. Exportar reporte de horas de un proyecto en formato CSV<br> 4. Notificacion por correo para reestablecer la contraseña|
 | Otros | 1. Contador de horas diarias disponibles por empleado con alerta visual al superar el límite |
 
